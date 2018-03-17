@@ -8,8 +8,8 @@ This is a kaggle kernel I wrote for House Prices competition. For your convenien
 
 1. Exploratory Visualization
 2. Data Cleaning
--. Feature Engineering  
-  -  Value Mapping
+- .Feature Engineering  
+  - .Value Mapping
 4. Modeling & Evaluation  
   - .dfsdf
 5. Ensemble Methods
