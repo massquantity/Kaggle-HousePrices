@@ -11,5 +11,5 @@ This is a kaggle kernel I wrote for House Prices competition. For your convenien
 -  Feature Engineering  
   -  Value Mapping
 4. Modeling & Evaluation  
-  - dfsdf
+  - .dfsdf
 5. Ensemble Methods
