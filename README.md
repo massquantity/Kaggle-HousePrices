@@ -14,6 +14,6 @@ This is a kaggle kernel I wrote for House Prices competition. For your convenien
   - Feature Selection
   - PCA
 - Modeling & Evaluation  
-1 Ensemble Methods
+1. Ensemble Methods
   - Weight Average
   - Stacking
