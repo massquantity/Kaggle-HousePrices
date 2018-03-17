@@ -6,10 +6,14 @@ This is a kaggle kernel I wrote for House Prices competition. For your convenien
 
 ## Content:
 
-1. Exploratory Visualization
-2. Data Cleaning
+- Exploratory Visualization
+- Data Cleaning
 - Feature Engineering  
   - Value Mapping
-4. Modeling & Evaluation  
-  - .dfsdf
-5. Ensemble Methods
+  - Pipeline
+  - Feature Selection
+  - PCA
+- Modeling & Evaluation  
+- Ensemble Methods
+  - Weight Average
+  - Stacking
