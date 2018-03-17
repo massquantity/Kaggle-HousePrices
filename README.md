@@ -1,2 +1,2 @@
-# Kaggle--House-Prices
-Kaggle Kernel for  House Prices competition, https://www.kaggle.com/massquantity/all-you-need-is-pca-lb-0-11421-top-4
+# Kaggle - House Prices: Advanced Regression Techniques
+This is a kaggle kernel I wrote for House Prices competition. For your convenience, please view it in NbViewer
