@@ -9,8 +9,8 @@ This is a kaggle kernel I wrote for House Prices competition. For your convenien
 1. Exploratory Visualization
 2. Data Cleaning
 3. Feature Engineering  
- 1. Value Mapping  
-  2. Pipeline  
+  3.1 Value Mapping  
+  3.2 Pipeline  
   3.3 Feature Selection  
   3.4 PCA
 4. Modeling & Evaluation  
