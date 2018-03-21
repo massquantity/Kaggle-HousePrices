@@ -17,6 +17,4 @@ This is a kaggle kernel I wrote for House Prices competition. For your convenien
 5. Ensemble Methods  
   5.1 Weight Average  
   5.2 Stacking
-dfgdgdg
-dgdhfghfg
-dfgdf
+
