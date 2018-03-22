@@ -2,8 +2,32 @@ Thank you for your insight and sorry for the late response. The fact is I've tri
 
 final ones shown in this kernel, and PCA always improved both CV and LB score, so I believe PCA do play an import role in my model. 
 
+asdadad asdjadjauio
+asdojiajd
+asdkopad
+I agree with you on the fiimport edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.RandomSeq;
+import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.Counter;
 
-I agree with you on the first point. If A and B are not correlated, introducing C may cause noisy direction, but only a slight bit. In fact, if you 
+public class aa
+{
+    public static void main(String[] args)
+    {
+        int T = Integer.parseInt(args[0]);
+        Counter heads = new Counter("heads");
+        Counter tails = new Counter("tails");
+        for (int t = 0; t < T; t++)
+            if (StdRandom.bernoulli(0.5))
+                heads.increment();
+            else tails.increment();
+        StdOut.println(heads);
+        StdOut.println(tails);
+        int d = heads.tally() - tails.tally();
+        StdOut.println("delta: " + Math.abs(d));
+    }
+}rst point. If A and B are not correlated, introducing C may cause noisy direction, but only a slight bit. In fact, if you 
 
 have read many other kernels(for example the heatmap in this kernel , https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python) , 
 
