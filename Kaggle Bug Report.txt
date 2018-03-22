@@ -1,0 +1,22 @@
+Thank you for your insight and sorry for the late response. The fact is I've tried many different feature combinations aside from the 
+
+final ones shown in this kernel, and PCA always improved both CV and LB score, so I believe PCA do play an import role in my model. 
+
+
+I agree with you on the first point. If A and B are not correlated, introducing C may cause noisy direction, but only a slight bit. In fact, if you 
+
+have read many other kernels(for example the heatmap in this kernel , https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python) , 
+
+you'll find that most of the old features are NOT totally uncorrlated. So as for your second point, if A and B 
+
+are corrlated, C = A+B, C may capture some pattern that A and B have missed. But there is multicollinearity in it, so we need PCA. 
+
+After doing PCA on A,B,C, the three directions in PCA would all be combinations of A, B and C. So I don't understand why you say "there are indeed only two uncorrelated directions",
+
+since there is no way the first two directions of PCA on ABC are the same as PCA only on AB.
+
+
+
+Hello, I recently created a kernel (https://www.kaggle.com/massquantity/all-you-need-is-pca-lb-0-11421-top-4/notebook), but it didn't show up in the competition's "Kernel" section (https://www.kaggle.com/c/house-prices-advanced-regression-techniques/kernels).
+ 
+It's frustrating to see this result, so please check this problem for me, thanks!
