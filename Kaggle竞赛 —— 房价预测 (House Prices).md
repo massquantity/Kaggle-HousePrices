@@ -18,13 +18,12 @@
 
 ![](https://github.com/massquantity/Kaggle-HousePrices/blob/master/images/%E5%85%AC%E5%BC%8F1.png)
 
-
-
+<br>
 我目前的得分是0.11421
 
 ![](https://github.com/massquantity/Kaggle-HousePrices/blob/master/images/0.11421.png)
 
-
+<br>
 
 对我的分数提升最大的主要有两块：
 
@@ -33,7 +32,7 @@
 
 将在下文中一一说明。
 
-
+<br>
 
 ### 目录：
 
@@ -46,9 +45,9 @@
 
 
 
-
+<br>
 ----
-
+<br>
 
 
 ### 探索性可视化（Exploratory Visualization）
@@ -65,9 +64,9 @@ sns.boxplot(train.YearBuilt, train.SalePrice)
 一般认为新房子比较贵，老房子比较便宜，从图上看大致也是这个趋势，由于建造年份 (YearBuilt) 这个特征存在较多的取值 (从1872年到2010年)，直接one hot encoding会造成过于稀疏的数据，因此在特征工程中会将其进行数字化编码 (LabelEncoder) 。
 
 
-
+<br>
 -----
-
+<br>
 
 
 ### 数据清洗 (Data Cleaning)
@@ -116,20 +115,20 @@ KitchenQual        1
 SaleType           1
 GarageArea         1
 ```
-
+<br>
  如果我们仔细观察一下data_description里面的内容的话，会发现很多缺失值都有迹可循，比如上表第一个PoolQC，表示的是游泳池的质量，其值缺失代表的是这个房子本身没有游泳池，因此可以用 “None” 来填补。
-
+<br>
 
 
 下面给出的这些特征都可以用 “None” 来填补：
-
+<br>
 ```python
 cols1 = ["PoolQC" , "MiscFeature", "Alley", "Fence", "FireplaceQu", "GarageQual", "GarageCond", "GarageFinish", "GarageYrBlt", "GarageType", "BsmtExposure", "BsmtCond", "BsmtQual", "BsmtFinType2", "BsmtFinType1", "MasVnrType"]
 for col in cols1:
     full[col].fillna("None", inplace=True)
 ```
 
-
+<br>
 
 下面的这些特征多为表示XX面积，比如 TotalBsmtSF 表示地下室的面积，如果一个房子本身没有地下室，则缺失值就用0来填补。
 
@@ -139,19 +138,19 @@ for col in cols:
     full[col].fillna(0, inplace=True)
 ```
 
-
+<br>
 
 LotFrontage这个特征与LotAreaCut和Neighborhood有比较大的关系，所以这里用这两个特征分组后的中位数进行插补。
 
 ```python
 full['LotFrontage']=full.groupby(['LotAreaCut','Neighborhood'])['LotFrontage'].transform(lambda x: x.fillna(x.median()))
 ```
-
+<br>
 
 
 -----
 
-
+<br>
 
 ### 特征工程 (Feature Engineering)
 
@@ -183,7 +182,7 @@ full.groupby(['MSSubClass'])[['SalePrice']].agg(['mean','median','count'])
 我总共大致排了20多个特征，具体见完整代码。
 
 
-
+<br>
 
 
 #### 特征组合
@@ -202,7 +201,7 @@ plt.show()
 
 ![](https://github.com/massquantity/Kaggle-HousePrices/blob/master/images/Lasso.png)
 
-
+<br>
 
 最终加了这些特征，这其中也包括了很多其他的各种尝试：
 
@@ -249,7 +248,7 @@ class add_feature(BaseEstimator, TransformerMixin):
             return X
 ```
 
-
+<br>
 
 #### PCA
 
@@ -262,10 +261,10 @@ X_scaled=pca.fit_transform(X_scaled)
 test_X_scaled = pca.transform(test_X_scaled)
 ```
 
-
+<br>
 
 -----
-
+<br>
 
 
 ### 基本建模&评估（Basic Modeling & Evaluation）
@@ -324,7 +323,7 @@ Extra: 0.136668, 0.0073
 Xgb: 0.126614, 0.0070
 ```
 
-
+<br>
 
 接下来建立一个调参的方法，应时刻牢记评估指标是RMSE，所以打印出的分数也要是RMSE。
 
@@ -341,7 +340,7 @@ class grid():
         print(pd.DataFrame(grid_search.cv_results_)[['params','mean_test_score','std_test_score']])
 ```
 
-
+<br>
 
 举例Lasso的调参：
 
@@ -362,7 +361,7 @@ grid(Lasso()).grid_get(X_scaled,y_log,{'alpha': [0.0004,0.0005,0.0007,0.0006,0.0
 7  {'max_iter': 10000, 'alpha': 0.0008}         0.111706        0.001229
 ```
 
-
+<br>
 
 经过漫长的多轮测试，最后选择了这六个模型：
 
@@ -375,11 +374,11 @@ ela = ElasticNet(alpha=0.005,l1_ratio=0.08,max_iter=10000)
 bay = BayesianRidge()
 ```
 
-
+<br>
 
 -----
 
-
+<br>
 
 ### 集成方法 (Ensemble Methods)
 
@@ -415,9 +414,9 @@ weight_avg = AverageWeight(mod = [lasso,ridge,svr,ker,ela,bay],weight=[w1,w2,w3,
 score = rmse_cv(weight_avg,X_scaled,y_log)
 print(score.mean())           # 0.10768459878025885
 ```
-
+<br>
 分数为0.10768，比任何单个模型都好。
-
+<br>
 
 
 然而若只用SVR和Kernel Ridge两个模型，则效果更好，看来是其他几个模型拖后腿了。。
@@ -428,7 +427,7 @@ score = rmse_cv(weight_avg,X_scaled,y_log)
 print(score.mean())           # 0.10668349587195189
 ```
 
-
+<br>
 
 
 
@@ -482,7 +481,7 @@ class stacking(BaseEstimator, RegressorMixin, TransformerMixin):
         return oof, test_mean
 ```
 
-
+<br>
 
 最开始我用get_oof的方法将第一层模型的特征矩阵提取出来，再和原始特征进行拼接，最后的cv分数下降到了0.1018，然而在leaderboard上的分数却变差了，看来这种方法会导致过拟合。
 
@@ -493,7 +492,7 @@ X_test_add = np.hstack((test_X_scaled,X_test_stack))
 print(rmse_cv(stack_model,X_train_add,b).mean())    # 0.101824682747
 ```
 
-
+<br>
 
 最后的结果提交，我用了Lasso，Ridge，SVR，Kernel Ridge，ElasticNet，BayesianRidge作为第一层模型，Kernel Ridge作为第二层模型。
 
