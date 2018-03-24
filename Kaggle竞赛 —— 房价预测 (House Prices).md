@@ -6,7 +6,7 @@
 
 比赛页面：https://www.kaggle.com/c/house-prices-advanced-regression-techniques
 
-![](/home/massquantity/Documents/House Prices/images/比赛页面.png)
+![](https://github.com/massquantity/Kaggle-HousePrices/blob/master/images/%E6%AF%94%E8%B5%9B%E9%A1%B5%E9%9D%A2.png)
 
 
 
@@ -22,7 +22,7 @@
 
 我目前的得分是0.11421
 
-![](/home/massquantity/Documents/House Prices/images/0.11421.png)
+![](https://github.com/massquantity/Kaggle-HousePrices/blob/master/images/0.11421.png)
 
 
 
@@ -60,7 +60,7 @@ plt.figure(figsize=(15,8))
 sns.boxplot(train.YearBuilt, train.SalePrice)
 ```
 
-![](/home/massquantity/Documents/House Prices/images/YearBuilt.png)
+![](https://github.com/massquantity/Kaggle-HousePrices/blob/master/images/YearBuilt.png)
 
 一般认为新房子比较贵，老房子比较便宜，从图上看大致也是这个趋势，由于建造年份 (YearBuilt) 这个特征存在较多的取值 (从1872年到2010年)，直接one hot encoding会造成过于稀疏的数据，因此在特征工程中会将其进行数字化编码 (LabelEncoder) 。
 
@@ -167,7 +167,7 @@ MSSubClass这个特征表示房子的类型，将数据按其分组：
 full.groupby(['MSSubClass'])[['SalePrice']].agg(['mean','median','count'])
 ```
 
-![](/home/massquantity/Documents/House Prices/images/MsClass.png)
+![](https://github.com/massquantity/Kaggle-HousePrices/blob/master/images/MsClass.png)
 
 按表中进行排序：
 
@@ -200,7 +200,7 @@ plt.xticks(rotation=90)
 plt.show()
 ```
 
-![](/home/massquantity/Documents/House Prices/images/Lasso.png)
+![](https://github.com/massquantity/Kaggle-HousePrices/blob/master/images/Lasso.png)
 
 
 
@@ -436,7 +436,7 @@ print(score.mean())           # 0.10668349587195189
 
 Stacking的原理见下图：
 
-![](/home/massquantity/Documents/House Prices/images/stacking.jpg)
+![](https://github.com/massquantity/Kaggle-HousePrices/blob/master/images/stacking.jpg)
 
 
 
