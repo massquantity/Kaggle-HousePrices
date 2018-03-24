@@ -66,8 +66,10 @@ sns.boxplot(train.YearBuilt, train.SalePrice)
 一般认为新房子比较贵，老房子比较便宜，从图上看大致也是这个趋势，由于建造年份 (YearBuilt) 这个特征存在较多的取值 (从1872年到2010年)，直接one hot encoding会造成过于稀疏的数据，因此在特征工程中会将其进行数字化编码 (LabelEncoder) 。
 
 
-<br>
------
+<br>  
+
+-------  
+
 <br>
 
 
@@ -147,10 +149,9 @@ LotFrontage这个特征与LotAreaCut和Neighborhood有比较大的关系，所�
 ```python
 full['LotFrontage']=full.groupby(['LotAreaCut','Neighborhood'])['LotFrontage'].transform(lambda x: x.fillna(x.median()))
 ```
-<br>
+<br>  
 
-
------
+-------  
 
 <br>
 
@@ -263,9 +264,10 @@ X_scaled=pca.fit_transform(X_scaled)
 test_X_scaled = pca.transform(test_X_scaled)
 ```
 
-<br>
+<br>  
 
------
+-------  
+
 <br>
 
 
@@ -376,9 +378,9 @@ ela = ElasticNet(alpha=0.005,l1_ratio=0.08,max_iter=10000)
 bay = BayesianRidge()
 ```
 
-<br>
+<br>  
 
------
+-------  
 
 <br>
 
