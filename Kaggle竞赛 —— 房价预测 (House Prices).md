@@ -16,7 +16,7 @@
 
 参加比赛首先要做的事是了解其评价指标，如果一开始就搞错了到最后可能就白费功夫了-。-   House Prices的评估指标是均方根误差 (RMSE)，这是常见的用于回归问题的指标 :   
 
-###                                                $\sqrt{\frac{\sum_{i=1}^{N}(y_i-\hat{y_i})^2}{N}}$
+![](https://github.com/massquantity/Kaggle-HousePrices/blob/master/images/%E5%85%AC%E5%BC%8F1.png)
 
 
 
